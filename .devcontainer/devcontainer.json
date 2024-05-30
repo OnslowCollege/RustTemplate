@@ -1,5 +1,8 @@
 {
     "image": "mcr.microsoft.com/devcontainers/rust:latest",
+    "features": {
+        "ghcr.io/devcontainers/features/desktop-lite:1": {}
+    },
     "customizations": {
         "vscode": {
             "extensions": [
@@ -15,7 +18,7 @@
                 "usernamehw.errorlens",
                 "aaron-bond.better-comments",
                 "vsls-contrib.gitdoc",
-                "danielgjackson.auto-dark-mode-windows"
+                "seunlanlege.action-buttons"
             ],
             "settings": {
                 "editor.wordWrap": "on",
@@ -41,10 +44,36 @@
                 "gitlens.showWelcomeOnInstall": false,
                 "rust-analyzer.check.command": "clippy",
                 "workbench.colorTheme": "Default Light Modern",
-                "workbench.preferredDarkColorTheme": "Default Dark Modern",
-                "workbench.preferredLightColorTheme": "Default Light Modern"
+                "actionButtons": {
+                    "commands": [
+                        {
+                            "cwd": "${workspaceFolder}",
+                            "name": "$(run-all) Debug",
+                            "useVsCodeApi": true,
+                            "command": "workbench.action.debug.start"
+                        },
+                        {
+                            "cwd": "{workspaceFolder}",
+                            "name": "$(pencil) Format file",
+                            "useVsCodeApi": true,
+                            "command": "editor.action.formatDocument"
+                        },
+                        {
+                            "name": "$(terminal-view-icon) New Terminal",
+                            "useVsCodeApi": true,
+                            "command": "workbench.action.terminal.newInActiveWorkspace"
+                        },
+                        {
+                            "name": "$(terminal-kill) Kill all Terminals",
+                            "useVsCodeApi": true,
+                            "command": "workbench.action.terminal.killAll"
+                        }
+                    ],
+                    "defaultColor": "none",
+                    "reloadButton": "↻",
+                    "loadNpmCommands": false
+                }
             }
         }
-    },
-    "postStartCommand": "bash -c git remote set-url origin 'https://github.com/OnslowCollege/$(basename $(pwd))'"
+    }
 }
