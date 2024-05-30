@@ -1,5 +1,3 @@
-# Onslow College Digital Technologies
-
 ## Rust Template
 
 Use this template to develop a text-based program in Rust.
